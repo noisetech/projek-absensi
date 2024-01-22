@@ -20,7 +20,13 @@ class CreateKaryawanTable extends Migration
             $table->string('no_hp');
             $table->string('email_pribadi')->nullable();
             $table->longText('alamat_pribadi')->nullable();
+            $table->foreignId('users_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('users_id')->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
