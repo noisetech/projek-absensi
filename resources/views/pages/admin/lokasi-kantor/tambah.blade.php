@@ -27,30 +27,8 @@
 
             </div>
             <div class="card-body">
-                <form action="{{ route('karyawan.simpan') }}" method="POST">
+                <form action="{{ route('lokasi_kantor.simpan') }}" method="POST">
                     @csrf
-
-                    <div class="form-group mb-3">
-                        <label class="form-label">Nama:</label>
-                        <input type="text" name="nama" class="form-control" placeholder="Masukan nama">
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label class="form-label">Jabatan:</label>
-                        <input type="text" name="jabatan" class="form-control" placeholder="Masukan jabatan">
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label class="form-label">No hp:</label>
-                        <input type="text" name="no_hp" class="form-control" placeholder="Masukan no hp">
-                    </div>
-
-
-
-                    <div class="form-group mb-3">
-                        <label class="form-label">Alamat:</label>
-                        <textarea name="alamat_pribadi" class="form-control" cols="30" rows="10"></textarea>
-                    </div>
 
 
                     <div class="form-group mb-3">
@@ -63,10 +41,18 @@
                         </select>
                     </div>
 
+
                     <div class="form-group mb-3">
-                        <label for="">Divisi:</label>
-                        <input type="text" name="divisi" class="form-control" placeholder="Masukan divi">
+                        <label class="form-label">Latitude:</label>
+                        <input type="text" name="latitude" class="form-control" placeholder="Masukan latitude">
                     </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Longitude:</label>
+                        <input type="text" name="longitude" class="form-control" placeholder="Masukan longitude">
+                    </div>
+
+
 
                     <button class="btn btn-sm btn-primary" type="submit">
                         Simpan

@@ -18,15 +18,15 @@ class CreatePresensiTable extends Migration
             $table->foreignId('karyawan_id');
             $table->date('tgl_presensi');
             $table->time('jam_in');
-            $table->time('jam_out')->nullable();
-            $table->text('foto_in')->nullable();
-            $table->text('foto_out')->nullable();
+            $table->time('jam_out');
+            $table->text('foto_in');
+            $table->text('foto_out');
             $table->timestamps();
 
             $table->foreign('karyawan_id')->references('id')
-                ->on('karyawan')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            ->on('karyawan')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 

@@ -14,17 +14,17 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create([
-            'name' => 'lihat user',
-        ]);
-        Permission::create([
-            'name' => 'tambah user',
-        ]);
-        Permission::create([
-            'name' => 'edit user',
-        ]);
-        Permission::create([
-            'name' => 'hapus user',
-        ]);
+        // Permission::create([
+        //     'name' => 'presensi',
+        // ]);
+        // Permission::create([
+        //     'name' => 'tambah user',
+        // ]);
+        // Permission::create([
+        //     'name' => 'edit user',
+        // ]);
+        // Permission::create([
+        //     'name' => 'hapus user',
+        // ]);
     }
 }

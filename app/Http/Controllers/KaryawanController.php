@@ -9,9 +9,14 @@ class KaryawanController extends Controller
 {
     public function index()
     {
-        $karyawan = DB::table('karyawan')->select('karyawan.*')->get();
+        $karyawan = DB::table('karyawan')->select('karyawan.*', 'dapertemen.nama as dapertemen')
+            ->join('dapertemen', 'dapertemen.id', '=', 'karyawan.dapertemen_id')
+            ->paginate(10);
+
+        $dapertemen = DB::table('dapertemen')->select('*')->get();
         return view('pages.admin.karyawan.index', [
-            'karyawan' => $karyawan
+            'karyawan' => $karyawan,
+            'dapertemen' => $dapertemen
         ]);
     }
 
@@ -21,21 +26,26 @@ class KaryawanController extends Controller
 
     public function tambah()
     {
-        return view('pages.admin.karyawan.tambah');
+        $dapertemen = DB::table('dapertemen')->select('*')->get();
+        return view('pages.admin.karyawan.tambah', [
+            'dapertemen' => $dapertemen
+        ]);
     }
 
     public function simpan(Request $request)
     {
 
-        // dd($request->all());
+
 
         DB::table('karyawan')
             ->insert([
                 'nama' => $request->nama,
+                'dapertemen_id' => $request->dapertemen_id,
                 'jabatan' => $request->jabatan,
-                'no_hp' => $request->no_hp,
+                'no_telepon' => $request->no_hp,
                 'email_pribadi' => $request->email_pribadi,
-                'alamat_pribadi' => $request->alamat_pribadi,
+                'alamat' => $request->alamat_pribadi,
+                'divisi' => $request->divisi
             ]);
 
         return redirect()->route('karyawan');

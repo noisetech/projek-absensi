@@ -16,15 +16,22 @@ class CreateKaryawanTable extends Migration
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('no_telepon');
+            $table->longText('alamat');
             $table->string('jabatan');
-            $table->string('no_hp');
+            $table->string('divisi')->nullable();
             $table->string('email_pribadi')->nullable();
-            $table->longText('alamat_pribadi')->nullable();
             $table->foreignId('users_id')->nullable();
+            $table->foreignId('dapertemen_id');
             $table->timestamps();
 
             $table->foreign('users_id')->references('id')
                 ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('dapertemen_id')->references('id')
+                ->on('dapertemen')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
